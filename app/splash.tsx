@@ -276,7 +276,7 @@ export default function SplashScreen() {
 
       {/* Bottom version text */}
       <Animated.Text style={[styles.versionText, subtitleStyle, { bottom: versionBottom }]}>
-        Labkesda Purwakarta v1.0.0
+        SIA Labkesda v1.0.0
       </Animated.Text>
     </AnimatedView>
   );

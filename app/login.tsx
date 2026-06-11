@@ -127,10 +127,10 @@ export default function LoginScreen() {
 
             {/* Welcome text */}
             <View style={styles.welcomeContainer}>
-              <Text style={styles.welcomeTitle}>Welcome</Text>
-              <Text style={styles.welcomeSubtitle}>
-                Masukan Email Dan Password
-              </Text>
+              <Text style={styles.welcomeGreeting}>Selamat Datang di</Text>
+              <Text style={styles.welcomeBrand}>SIA Labkesda</Text>
+              <Text style={styles.welcomeTagline}>Sistem Informasi Analitik</Text>
+              <Text style={styles.welcomeSubtitle}>Masukkan email dan password untuk melanjutkan</Text>
             </View>
 
             {/* Form */}
@@ -254,7 +254,7 @@ export default function LoginScreen() {
                 <Ionicons name="help-circle-outline" size={18} color={Colors.onSurfaceVariant} />
                 <Text style={styles.helpText}>Butuh & Dukungan </Text>
               </TouchableOpacity>
-              <Text style={styles.version}>Labkesda Purwakarta v1.0.0</Text>
+              <Text style={styles.version}>SIA Labkesda v1.0.0</Text>
             </View>
           </View>
         </ScrollView>
@@ -277,7 +277,7 @@ export default function LoginScreen() {
             </View>
             <Text style={styles.modalTitle}>Lupa Kata Sandi?</Text>
             <Text style={styles.modalDescription}>
-              Untuk menjaga keamanan akun Anda, pemulihan atau reset kata sandi dilakukan secara terpusat. Silakan hubungi Administrator SIM Labkesda Purwakarta.
+              Untuk menjaga keamanan akun Anda, pemulihan atau reset kata sandi dilakukan secara terpusat. Silakan hubungi Administrator SIA Labkesda.
             </Text>
             <TouchableOpacity 
               style={styles.modalButton}
@@ -380,19 +380,35 @@ const styles = StyleSheet.create({
   // Welcome
   welcomeContainer: {
     alignItems: 'center',
-    gap: 4,
+    gap: 2,
   },
-  welcomeTitle: {
-    fontSize: 22,
-    fontFamily: 'Poppins_600SemiBold',
-    color: Colors.onSurface,
+  welcomeGreeting: {
+    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+    color: Colors.onSurfaceVariant,
+    letterSpacing: 0.3,
+  },
+  welcomeBrand: {
+    fontSize: 26,
+    fontFamily: 'Poppins_700Bold',
+    color: Colors.primary,
+    letterSpacing: -0.5,
+    marginTop: 2,
+  },
+  welcomeTagline: {
+    fontSize: 12,
+    fontFamily: 'Inter_500Medium',
+    color: Colors.onSurfaceVariant,
+    letterSpacing: 1.5,
+    textTransform: 'uppercase',
+    marginTop: 2,
   },
   welcomeSubtitle: {
     fontSize: 13,
     fontFamily: 'Inter_400Regular',
-    color: Colors.onSurfaceVariant,
+    color: Colors.outlineVariant,
     textAlign: 'center',
-    lineHeight: 20,
+    marginTop: 8,
   },
   // Form
   form: {

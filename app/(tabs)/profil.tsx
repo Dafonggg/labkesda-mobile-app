@@ -26,7 +26,7 @@ export default function ProfilScreen() {
     <View style={styles.safeArea}>
       {/* Top bar */}
       <View style={[styles.topBar, { paddingTop: insets.top }]}>
-        <Text style={styles.topBarTitle}>Labkesda</Text>
+        <Text style={styles.topBarTitle}>Profil</Text>
       </View>
 
       <ScrollView

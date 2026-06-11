@@ -1,5 +1,5 @@
 /**
- * Labkesda Purwakarta LIMS – Design Token System
+ * SIA Labkesda – Design Token System
  * Matches the Stitch-generated design system for consistent UI.
  */
 import { Platform } from 'react-native';

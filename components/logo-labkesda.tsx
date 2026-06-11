@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ImageStyle, StyleProp } from 'react-native';
 
-// ── Labkesda Purwakarta — Official Logo ─────────────────────────────────────
+// ── SIA Labkesda — Official Logo ────────────────────────────────────────────
 // Source: assets/images/logo labkesda2.png
 // Two variants:
 //   • LogoIcon  — the icon-only mark (square, for circular containers)

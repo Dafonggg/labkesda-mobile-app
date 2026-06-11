@@ -131,7 +131,7 @@ export default function SinkronisasiScreen() {
       <View style={[styles.topBar, { paddingTop: insets.top }]}>
         <View>
           <Text style={styles.topBarTitle}>Sync Data</Text>
-          <Text style={styles.topBarSubtitle}>Labkesda</Text>
+          <Text style={styles.topBarSubtitle}>SIA Labkesda</Text>
         </View>
       </View>
 

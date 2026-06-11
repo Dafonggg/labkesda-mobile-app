@@ -533,7 +533,7 @@ export default function DashboardScreen() {
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
               <Text style={styles.sectionTitle}>Recent Activity</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => router.push('/(tabs)/jadwal')}>
                 <Text style={styles.viewAllText}>View All</Text>
               </TouchableOpacity>
             </View>
@@ -545,35 +545,56 @@ export default function DashboardScreen() {
                   <Text style={{ fontSize: 12, fontFamily: 'Inter_400Regular', color: Colors.onSurfaceVariant, marginTop: 8 }}>Belum ada jadwal sampling</Text>
                 </View>
               ) : (
-                activities.map((item) => (
-                  <View
-                    key={item.id}
-                    style={[
-                      styles.activityCard,
-                      item.status === 'syncing' && styles.activityCardWarning,
-                    ]}
-                  >
-                    <View
+                activities.map((item) => {
+                  // Find the matching jadwal to get its date for navigation
+                  const matchingJadwal = sortedJadwalList.find((j) => j.id === item.id);
+                  const jadwalDate = matchingJadwal
+                    ? (() => {
+                        const d = parseDateRobust(matchingJadwal.tanggal_sampling);
+                        const y = d.getFullYear();
+                        const m = String(d.getMonth() + 1).padStart(2, '0');
+                        const dy = String(d.getDate()).padStart(2, '0');
+                        return `${y}-${m}-${dy}`;
+                      })()
+                    : undefined;
+
+                  return (
+                    <TouchableOpacity
+                      key={item.id}
+                      activeOpacity={0.7}
+                      onPress={() =>
+                        router.push({
+                          pathname: '/(tabs)/jadwal',
+                          params: jadwalDate ? { date: jadwalDate } : {},
+                        })
+                      }
                       style={[
-                        styles.activityIconBox,
-                        item.status === 'syncing'
-                          ? styles.activityIconBoxWarning
-                          : styles.activityIconBoxSuccess,
+                        styles.activityCard,
+                        item.status === 'syncing' && styles.activityCardWarning,
                       ]}
                     >
-                      <MaterialCommunityIcons
-                        name={item.icon}
-                        size={22}
-                        color={item.status === 'syncing' ? Colors.statusWarning : Colors.statusSuccess}
-                      />
-                    </View>
-                    <View style={styles.activityInfo}>
-                      <Text style={styles.activityTitle}>{item.title}</Text>
-                      <Text style={styles.activitySubtitle}>{item.subtitle}</Text>
-                    </View>
-                    <StatusBadge status={item.status} />
-                  </View>
-                ))
+                      <View
+                        style={[
+                          styles.activityIconBox,
+                          item.status === 'syncing'
+                            ? styles.activityIconBoxWarning
+                            : styles.activityIconBoxSuccess,
+                        ]}
+                      >
+                        <MaterialCommunityIcons
+                          name={item.icon}
+                          size={22}
+                          color={item.status === 'syncing' ? Colors.statusWarning : Colors.statusSuccess}
+                        />
+                      </View>
+                      <View style={styles.activityInfo}>
+                        <Text style={styles.activityTitle}>{item.title}</Text>
+                        <Text style={styles.activitySubtitle}>{item.subtitle}</Text>
+                      </View>
+                      <StatusBadge status={item.status} />
+                    </TouchableOpacity>
+                  );
+                })
               )}
             </View>
           </View>
